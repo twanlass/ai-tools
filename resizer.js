@@ -30,7 +30,7 @@ function resizeIcon(selection) {
   var icon_h = selection[0].height
   var icon_w = selection[0].width
   // Calc resize values
-  var ratio = Math.min( 512 / icon_w, 512 / icon_h );
+  var ratio = Math.min( max_w / icon_w, max_h / icon_h );
   var width = ratio * icon_w;
   var height = ratio * icon_h;
   // Set new icon dimentions 
