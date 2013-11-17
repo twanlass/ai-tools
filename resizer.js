@@ -4,7 +4,6 @@
 
 // Globals
 var doc = app.activeDocument;
-var allLayers = doc.layers.length;
 var activeAB = doc.artboards[doc.artboards.getActiveArtboardIndex()];
 var padding = 25
 var docTop = activeAB.artboardRect[1]; 
@@ -15,14 +14,16 @@ var max_w = 512
 var max_h = 512
 
 // Main loop - process all layers
-for (i = 0; i < 1; i++) {
+for (i = 0; i < doc.layers.length; i++) {
   // select current layer item
   doc.layers[i].pageItems[0].selected = true;  
   // Get ref to selected icon
-  selection = doc.selection;  
+  var selection = doc.selection;  
   // Process icon
   resizeIcon(selection)
   positionIcon(selection)
+  // un-select layer and move to next item
+  doc.layers[i].pageItems[0].selected = false;  
 }
 
 function resizeIcon(selection) {
